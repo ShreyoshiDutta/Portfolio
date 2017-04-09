@@ -66,6 +66,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(Monster.TABLE_NAME, Monster.COLUMN_ID + "= ?", new String[]{String.valueOf(monster.get_id())});
     }
 
+    public void updateMonster(Monster monster){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Monster.COLUMN_NAME,monster.getM_sName());
+        cv.put(Monster.COLUMN_AGE,monster.getM_iAge());
+        cv.put(Monster.COLUMN_SPECIES,monster.getM_sSpecies());
+        cv.put(Monster.COLUMN_ATTACK_POWER,monster.getM_iAttackPower());
+        cv.put(Monster.COLUMN_HEALTH,monster.getM_fHealth());
+
+
+        db.update(Monster.TABLE_NAME,cv, Monster.COLUMN_ID + "= ?", new String[]{String.valueOf(monster.get_id())});
+
+    }
+
     public void createDefaultMonsters(){
         addMonster(new Monster(0,"Groot",11,"Tree",80,900));
         addMonster(new Monster(1,"Grump",11,"Neverbeast",50,900));

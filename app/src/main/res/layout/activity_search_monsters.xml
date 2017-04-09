@@ -16,7 +16,28 @@ tools:context="com.example.sonai.portfolio.SearchMonsters">
     android:inputType="textVisiblePassword"/>
 
 <!-- List View -->
-<ListView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total Monsters" />
+
+        <TextView
+            android:id="@+id/numOfMonsters"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <ListView
     android:id="@+id/list_view"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" />

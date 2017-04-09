@@ -12,12 +12,13 @@
         android:id="@+id/ageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
         android:text="Age"
         app:layout_constraintRight_toLeftOf="@+id/age"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintBaseline_toBaselineOf="@+id/age"
-        tools:layout_constraintBaseline_creator="1" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/speciesView"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/speciesView"
@@ -25,95 +26,99 @@
         android:layout_height="wrap_content"
         android:text="Species"
         app:layout_constraintRight_toLeftOf="@+id/ageView"
-        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="21dp"
-        app:layout_constraintTop_toBottomOf="@+id/ageView"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/species"
         tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="29dp"
         app:layout_constraintLeft_toLeftOf="@+id/ageView" />
 
     <TextView
         android:id="@+id/attackPowerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
         android:text="Attack Power"
-        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/healthView"
-        app:layout_constraintRight_toRightOf="@+id/healthView"
-        android:layout_marginBottom="19dp" />
+        android:layout_marginStart="31dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/healthView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
         android:text="Health"
         app:layout_constraintRight_toLeftOf="@+id/attackPower"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/health"
-        app:layout_constraintTop_toTopOf="@+id/health" />
+        app:layout_constraintBottom_toBottomOf="@+id/attackPower"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/attackPower" />
 
     <EditText
         android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="enter age of monster"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintRight_toRightOf="@+id/name"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/name" />
 
     <EditText
         android:id="@+id/species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:ems="10"
+        android:hint="enter species of monster"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
         android:singleLine="false"
-        app:layout_constraintLeft_toLeftOf="@+id/age"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/age"
         app:layout_constraintTop_toBottomOf="@+id/age"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintLeft_toLeftOf="@+id/age" />
 
     <EditText
         android:id="@+id/attackPower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="enter attack power of monster"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_marginEnd="2dp"
+        android:selectAllOnFocus="true"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/health"
-        app:layout_constraintRight_toRightOf="@+id/health"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginEnd="2dp"
+        app:layout_constraintRight_toRightOf="@+id/species"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/species" />
 
     <EditText
         android:id="@+id/health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="enter health of monster"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:selectAllOnFocus="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
         app:layout_constraintRight_toRightOf="@+id/species"
-        android:layout_marginTop="65dp"
-        app:layout_constraintTop_toBottomOf="@+id/species"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/species" />
 
@@ -122,65 +127,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="45dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="79dp" />
+        android:layout_marginTop="33dp"
+        app:layout_constraintTop_toBottomOf="@+id/health" />
 
     <Button
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
-        android:layout_marginStart="16dp"
-        tools:layout_constraintTop_creator="1"
+        app:layout_constraintRight_toLeftOf="@+id/health"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/save"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/save" />
+        app:layout_constraintBottom_toTopOf="@+id/resultLabel"
+        android:layout_marginBottom="32dp" />
 
     <TextView
         android:id="@+id/resultLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No monster created yet"
-        android:layout_marginStart="66dp"
-        android:layout_marginEnd="66dp"
+        app:layout_constraintRight_toLeftOf="@+id/save"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/attackPower"
-        android:layout_marginTop="17dp"
-        app:layout_constraintTop_toBottomOf="@+id/save"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/healthView" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
     <TextView
         android:id="@+id/nameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
         android:text="Name"
         app:layout_constraintRight_toLeftOf="@+id/name"
-        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/name"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="11dp" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="enter name of monster"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:selectAllOnFocus="true"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/age"
-        app:layout_constraintBaseline_toBaselineOf="@+id/nameView"
-        tools:layout_constraintBaseline_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/age" />
+        android:layout_marginEnd="28dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="38dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

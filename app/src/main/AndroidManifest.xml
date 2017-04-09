@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MonsterUCActivity" />
-        <activity android:name=".MainUI" />
         <activity android:name=".Monster_options">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewAMonster" />
-        <activity android:name=".SearchMonsters"></activity>
+        <activity android:name=".SearchMonsters" android:windowSoftInputMode="stateHidden"></activity>
+
     </application>
 
 </manifest>

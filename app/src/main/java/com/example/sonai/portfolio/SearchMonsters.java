@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sonai.portfolio.models.DatabaseHelper;
@@ -36,6 +37,10 @@ public class SearchMonsters extends AppCompatActivity implements
     private DatabaseHelper m_cDBHelper;
 
 
+    //Total monster label
+    TextView totalMonster;
+
+
     // Search EditText
     EditText inputSearch;
 
@@ -47,18 +52,17 @@ public class SearchMonsters extends AppCompatActivity implements
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ADD_PERSON_REQUEST) {
+        //if(requestCode == ADD_PERSON_REQUEST) {
             if(resultCode == RESULT_OK) {
-                // Get the person object from the intent and add it to our list
-                Monster newMonster = data.getParcelableExtra("result");
-                m_cMonsterList.add(newMonster);
+                m_cMonsterList = new ArrayList<>(m_cDBHelper.getAllMonsters().values());
                 adapter.notifyDataSetChanged();
                 UpdateListCount();
             }
-        }
+        //}
     }
 
     private void UpdateListCount() {
+        totalMonster.setText(String.valueOf(m_cMonsterList.size()));
         setTitle("All Monsters: " + m_cMonsterList.size());
     }
 
@@ -68,7 +72,7 @@ public class SearchMonsters extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_monsters);
 
-
+        totalMonster = (TextView) findViewById(R.id.numOfMonsters);
 
         // Listview Data
         /*String products[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
@@ -125,6 +129,8 @@ public class SearchMonsters extends AppCompatActivity implements
             }
         });
 
+        // to display total monster count
+        refreshListView();
 
     }
 
@@ -171,7 +177,9 @@ public class SearchMonsters extends AppCompatActivity implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent showMonsterView = new Intent(this,ViewAMonster.class);
+        //Intent showMonsterView = new Intent(this,ViewAMonster.class);
+        Intent showMonsterView = new Intent(this,MonsterUCActivity.class);
+
         //Monster aMonster = new Monster(0,"Groot",11,"Tree",80,900);
         showMonsterView.putExtra("Monster",m_cMonsterList.get(position));
         startActivity(showMonsterView);
