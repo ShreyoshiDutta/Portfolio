@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * Created by Sonai on 8/4/17.
+ * This class is useful for getting a custom view for each cell in the list view.
  */
 
 public class MonsterAdapter extends ArrayAdapter {

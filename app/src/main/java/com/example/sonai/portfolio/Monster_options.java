@@ -1,3 +1,6 @@
+/*
+This class serves as the entry point to the app. Sets up listners for 3 buttons on the home screen.
+ */
 package com.example.sonai.portfolio;
 
 import android.content.Intent;

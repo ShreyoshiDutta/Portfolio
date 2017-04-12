@@ -22,6 +22,11 @@ import android.widget.Toast;
 import com.example.sonai.portfolio.models.DatabaseHelper;
 import com.example.sonai.portfolio.models.Monster;
 
+/**
+ * Created by Sonai on 8/4/17.
+ * This class handles search and filtering of monsters in the List view
+ * based on the search string enter by users.
+ */
 public class SearchMonsters extends AppCompatActivity implements
         AdapterView.OnItemLongClickListener , AdapterView.OnItemClickListener{
 
@@ -49,6 +54,7 @@ public class SearchMonsters extends AppCompatActivity implements
     ArrayList<HashMap<String, String>> productList;
     private ArrayList<Monster> m_cMonsterList;
 
+    // this method is called back whenever any result is returned by any activity initiated fromthis view
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -61,11 +67,21 @@ public class SearchMonsters extends AppCompatActivity implements
         //}
     }
 
+    // Updates the monsters counter
     private void UpdateListCount() {
         totalMonster.setText(String.valueOf(m_cMonsterList.size()));
         setTitle("All Monsters: " + m_cMonsterList.size());
     }
 
+
+    /* Set up immediately after this view is created:
+    1. Attaches click listener for detailed view
+    2. Long click listener for deleting monster
+    3. Sets up adapter for custom cell view
+    4. Loads monster list from DB. This technique qill slow down the app
+        when number of monster becomes large. Then a adaptive pre-fetch algorithm
+         can be used to mitigate screen freezes.
+     */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,11 +90,8 @@ public class SearchMonsters extends AppCompatActivity implements
 
         totalMonster = (TextView) findViewById(R.id.numOfMonsters);
 
-        // Listview Data
-        /*String products[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
-                "iPhone 4S", "Samsung Galaxy Note 800",
-                "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro"};
-*/
+
+
         lv = (ListView) findViewById(R.id.list_view);
         inputSearch = (EditText) findViewById(R.id.inputSearch);
 
@@ -105,8 +118,6 @@ public class SearchMonsters extends AppCompatActivity implements
         lv.setAdapter(adapter);
         lv.setOnItemLongClickListener(this);
         lv.setOnItemClickListener(this);
-
-
 
         inputSearch.addTextChangedListener(new TextWatcher() {
 
@@ -147,6 +158,9 @@ public class SearchMonsters extends AppCompatActivity implements
         UpdateListCount();
     }
 
+    /*
+    Defines behaviour on long click: in this case it deletes the monster while showing appropiate message
+     */
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
         AlertDialog.Builder builder =
@@ -175,6 +189,11 @@ public class SearchMonsters extends AppCompatActivity implements
         return false;
     }
 
+    /*
+    Defines behaviour on click: in this case it navigates to detailed view
+    which for our app is the same updated-create view. Although for the earlier
+    exercises I have created a seperate view screen but that screen is not used in the final app.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Intent showMonsterView = new Intent(this,ViewAMonster.class);

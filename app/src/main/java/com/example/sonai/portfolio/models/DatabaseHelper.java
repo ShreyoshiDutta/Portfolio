@@ -11,6 +11,8 @@ import java.util.LinkedHashMap;
 
 /**
  * Created by Sonai on 8/4/17.
+ * As the name suggests this class contains helper methods to access ( read and write)
+ * to SQLLite DB on the mobile device.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -33,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    // inserts new monster in DB
     public void addMonster(Monster monster) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -46,6 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //fetches all monsters
     public HashMap<Long, Monster> getAllMonsters() {
         HashMap<Long, Monster> people = new LinkedHashMap<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -61,11 +65,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return people;
     }
 
+    //deletes the monster supplied as argument
     public void removeMonster(Monster monster) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(Monster.TABLE_NAME, Monster.COLUMN_ID + "= ?", new String[]{String.valueOf(monster.get_id())});
     }
 
+    //Updates an existing monster
     public void updateMonster(Monster monster){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -80,6 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    // initialises the monster table with 4 monsters
     public void createDefaultMonsters(){
         addMonster(new Monster(0,"Groot",11,"Tree",80,900));
         addMonster(new Monster(1,"Grump",11,"Neverbeast",50,900));
